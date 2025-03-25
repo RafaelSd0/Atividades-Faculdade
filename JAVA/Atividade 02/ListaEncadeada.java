@@ -89,7 +89,39 @@ public class ListaEncadeada {
     return tail.getVal();
   }
 
+  /* Métodos Extras */
+
+  public int tamanho(){
+    Node atual = head; 
+    int tam = 0;
+    while (atual != null) {
+      tam++; 
+      atual = atual.prox; 
+    }
+    return tam;
+  }
+
+  public boolean buscar(Object item) {
+    Node temp = head;
+
+    while ( temp != null && temp.getVal() != item) {
+      temp = temp.prox;
+    }
+
+    if ( temp == null){
+      return false;
+    }
+
+    return true;
+  }
+
+  public void limpar(){
+    this.head = null;
+    this.tail = null;
+  }
+
   /*Meus Metodos*/
+
   public boolean headVazio(){
     return head == null;
   }

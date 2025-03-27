@@ -38,6 +38,16 @@ public class Main {
     } catch (ListaVaziaException e){
       System.err.println(e);
     }
-    
+
+    System.out.println("______Teste Remover______");
+
+    try{
+      lista.remover(60);
+    } catch (ObjetoNaoEncontradoException e){
+      System.err.println(e);
+    }
+    //Saida esperada 30, 20, 10, 40, 80
+    lista.exibirLista();
+
   }
 }

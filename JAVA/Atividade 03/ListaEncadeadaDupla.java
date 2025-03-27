@@ -51,20 +51,61 @@ public class ListaEncadeadaDupla <T> {
     size ++;
   }
 
-  // Remove Elemento da lista
-  public void remover(T item) throws ObjetoNaoEncontradoException{
-    No<T> apg = head;
+// Remove Elemento da lista
+  public void remover(T item) throws ObjetoNaoEncontradoException {
+    // Caso a lista esteja vazia
+    if (head == null) {
+        throw new ObjetoNaoEncontradoException();
+    }
+    
+    No<T> atual = head;
+    boolean encontrado = false;
+    
+    // Percorre a lista procurando o elemento
+    while (atual != null) {
+      if (atual.val.equals(item)) {
+          encontrado = true;
+          
+          // Caso 1: Remoção do primeiro nó
+        if (atual == head) {
+            head = atual.prox;
+            if (head != null) {
+                head.back = null;
+            } else {
+                // Lista ficou vazia
+                tail = null;
+            }
+        }
+        // Caso 2: Remoção do último nó
+        else if (atual == tail) {
+            tail = atual.back;
+            tail.prox = null;
+        }
+        // Caso 3: Remoção de um nó do meio
+        else {
+            atual.back.prox = atual.prox;
+            atual.prox.back = atual.back;
+        }
+        
+        break; // Elemento encontrado e removido, pode sair do loop
+      }
+      atual = atual.prox;
+    }
+    
+    if (!encontrado) {
+        throw new ObjetoNaoEncontradoException();
+    }
 
   }
 
   // Exibe todos os elementos da lista
   public void exibirLista() {
-    No<T> atual = head; 
-    for(int i = 0; i < size; i++ ){
-      System.out.println(atual.val);
-      atual = atual.prox;
+    No<T> atual = head;
+    while (atual != null) {  // Melhor usar while em vez de for com size
+        System.out.println(atual.val);  // Assumindo que o campo se chama "dado"
+        atual = atual.prox;  // Use o mesmo nome de campo que você definiu na classe No
     }
-  }
+}
 
   public Object getPrimeiro() throws ListaVaziaException {
     if (headVazio()) {

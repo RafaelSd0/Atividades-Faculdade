@@ -1,7 +1,7 @@
 // Classe que representa a lista encadeada
-public class ListaEncadeada {
-  Node head;
-  Node tail;
+public class ListaEncadeada<T> {
+  No<T> head;
+  No<T> tail;
 
   public ListaEncadeada() {
     this.head = null;
@@ -11,9 +11,9 @@ public class ListaEncadeada {
   /* Métodos Obrigatórios*/
 
   //Insere elemento na primeira posição da lista.
-  public void inserirInicio(Object item){
+  public void inserirInicio(T item){
 
-    Node novo = new Node(item);
+    No<T> novo = new No<T>(item);
 
     if(headVazio() ){
       head = novo;
@@ -27,9 +27,9 @@ public class ListaEncadeada {
   }
 
   //Insere elemento no final da lista.
-  public void inserirFim(Object item){
+  public void inserirFim(T item){
 
-    Node novo = new Node(item);
+    No<T> novo = new No<T>(item);
 
     if(headVazio()){
       head = novo;
@@ -41,9 +41,9 @@ public class ListaEncadeada {
   }
 
   // Remove Elemento da lista
-  public void remover(Object item) throws ObjetoNaoEncontradoException{
-    Node apagar = head;
-    Node anterior = null;
+  public void remover(T item) throws ObjetoNaoEncontradoException{
+    No<T> apagar = head;
+    No<T> anterior = null;
 
     while (apagar != null && apagar.getVal() != item) {
       anterior = apagar;
@@ -68,56 +68,30 @@ public class ListaEncadeada {
 
   // Exibe todos os elementos da lista
   public void exibirLista() {
-    Node atual = head; 
+    No<T> atual = head; 
     while (atual != null) {
         System.out.println(atual.val); 
         atual = atual.prox; 
     }
   }
 
-  public Object getPrimeiro() throws ListaVaziaException {
+  public T getPrimeiro() throws PilhaVaziaException {
     if (headVazio()) {
-      throw new ListaVaziaException();
+      throw new PilhaVaziaException();
     }
     return head.getVal();
   }
 
-  public Object getUltimo() throws ListaVaziaException {
+  public T getUltimo() throws PilhaVaziaException {
     if (tailVazio()) {
-      throw new ListaVaziaException();
+      throw new PilhaVaziaException();
     }
     return tail.getVal();
   }
 
-  /* Métodos Extras */
-
-  public int tamanho(){
-    Node atual = head; 
-    int tam = 0;
-    while (atual != null) {
-      tam++; 
-      atual = atual.prox; 
-    }
-    return tam;
-  }
-
-  public boolean buscar(Object item) {
-    Node temp = head;
-
-    while ( temp != null && temp.getVal() != item) {
-      temp = temp.prox;
-    }
-
-    if ( temp == null){
-      return false;
-    }
-
-    return true;
-  }
-
   public void limpar(){
-    this.head = null;
-    this.tail = null;
+    tail = null;
+    head = null;
   }
 
   /*Meus Métodos*/

@@ -15,7 +15,7 @@ public class ListaEncadeadaDupla <T> {
     No<T> novo;
 
     if(headVazio() ){
-      novo = new No<>(item, null, null);
+      novo = new No<T>(item, null, null);
       head = novo;
       tail = novo;
     } else{

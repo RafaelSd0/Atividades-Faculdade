@@ -2,9 +2,9 @@
 * Autor............: Rafael Silva de Oliveira
 * Matricula........: 202310591
 * Inicio...........: 13/03/2025
-* Ultima alteracao.: 22/03/2025
+* Ultima alteração.: 22/03/2025
 * Nome.............: Trem-Bala
-* Funcao...........: Simulação do funcionamento de trens em um percurso pré-definido, com 5 trechos distintos. A simulação conta com 2 trens simultâneos. A direção inicial dos trens é escolhida pelo usuário na GUI.
+* Função...........: Simulação do funcionamento de trens em um percurso pré-definido, com 5 trechos distintos. A simulação conta com 2 trens simultâneos. A direção inicial dos trens é escolhida pelo usuário na GUI.
 ************************************************************************ */
 
 import javafx.animation.AnimationTimer;
@@ -44,6 +44,7 @@ public class Principal extends Application {
     Label labelVelocidade2 = new Label("Velocidade Trem 2");
 
     // Inicialização do trilho
+    @SuppressWarnings("unused")
     Trilho tri = new Trilho(root);
 
     // Posição dos botões 
